@@ -1,0 +1,26 @@
+<manifest package="com.example.catgatekeeper"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+    <application
+        android:label="CatGatekeeper"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+
+        <service
+            android:name=".AppMonitorService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_config"/>
+        </service>
+
+        <service android:name=".OverlayService"/>
+
+    </application>
+</manifest>
